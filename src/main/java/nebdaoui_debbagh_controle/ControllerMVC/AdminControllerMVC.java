@@ -16,8 +16,6 @@ import nebdaoui_debbagh_controle.service.TicketService;
 import nebdaoui_debbagh_controle.service.UserService;
 
 
-
-
 @Controller
 @RequestMapping("/admin")
 public class AdminControllerMVC {

@@ -18,7 +18,6 @@ import nebdaoui_debbagh_controle.service.UserService;
 @RequestMapping("/dev")
 public class DevController {
 
-	
 	@Autowired
 	TicketService ticketservice ;
 	
@@ -27,8 +26,7 @@ public class DevController {
 		ModelAndView m = new ModelAndView("tickets/tickets");
 		m.addObject("tickets", ticketservice.listeByDev());
 		return m;
-	}
-	
+	}	
 	@GetMapping("tickets/setEncours/{id}")
 	public String setE(@PathVariable Long id) {
 		ticketservice.setEncours(id);

@@ -14,27 +14,20 @@ import nebdaoui_debbagh_controle.model.Ticket;
 import nebdaoui_debbagh_controle.model.User;
 import nebdaoui_debbagh_controle.service.UserService;
 
-
-
 @Controller
 @RequestMapping("/")
 public class HomeController {
-	
 	@Autowired
 	UserService userService;
-	
 	@GetMapping
 	public String index() {
 		return "index";
 	}
 	
-	
-	
 	@GetMapping("login")
 	public String login() {
 		return "connexion";
 	}
-	
 	
 	@GetMapping("inscription")
 	public String insc(Model m) {

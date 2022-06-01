@@ -33,7 +33,6 @@ public class TicketContoller {
 	
 	@Autowired
 	UserRepository userRepository;
-
 	
 	@GetMapping("/add")
 	public ModelAndView ajout() {
@@ -44,7 +43,6 @@ public class TicketContoller {
 		return m ;
 	}
 	
-
 	@PostMapping("/add")
 	public String enregistrer(@ModelAttribute("ticket") Ticket ticket) {
 		Ticket t = ticketservice.getTicket(ticket.getId());

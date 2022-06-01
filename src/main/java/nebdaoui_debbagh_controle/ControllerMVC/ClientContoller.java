@@ -16,7 +16,6 @@ import nebdaoui_debbagh_controle.service.UserService;
 @Controller
 @RequestMapping("/client")
 public class ClientContoller {
-
 	@Autowired
 	TicketService ticketservice;
 	

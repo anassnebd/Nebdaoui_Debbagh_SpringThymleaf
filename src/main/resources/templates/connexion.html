@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/default}">
+
+<head>
+	<title>Inscription</title>
+	<style>
+		body{
+			background-color: #101115;
+			color: white;
+		}
+		
+		form{
+			width :700px;
+		}
+		button{
+			width: 170px;
+			height : 40px;
+			border-radius: 100px;
+		}
+		.header_page{
+		    height: 90px;
+		    width: auto;
+		}
+		.options{
+		    float: right;
+		    justify-content: space-around;
+		    display: flex;
+		    list-style: none;
+		    margin-top: 10px;
+		    color: white;
+		    top: 50%;
+		
+		}
+		.logo{
+		    float: left;
+		}
+		.opt_header{
+		   padding-left: 40px;
+		}
+		.hire_me{
+		    float: right;
+		    margin-left: 20px;
+		}
+		.hire_btn{
+		    display: flex;
+		    font-family: 'Circular Std';
+		    color: white;
+		    background-color: transparent;
+		    border: 1px white solid;
+		    border-radius: 5px;
+		    height: 35px;
+		    padding: 10px 15px; 
+		    cursor: pointer;
+		
+		}
+		.hire_btn:hover{
+		    background-color: #3E82E5;
+		    color: white;
+		    border: 1px #3E82E5 solid;
+		}
+		
+	</style>
+</head>
+
+<body class="text-center">
+	<section layout:fragment="contenu">
+	<div class='header_page'>
+      <div class='logo'>
+        <img src="" th:src="@{/images/ticketlogo.png}"  alt='Logo' width='70px'/>
+      </div>
+      <div class='testop'>
+        <ul class='options'>
+          <li><a class="opt_header"><span><a href="/" th:href="@{/login}">S'authentifier</a></span></a></li>
+          <li><a class="opt_header"><span><a href="/" th:href="@{/inscription}">S'enregistrer</a></span></a></li>
+          <li><a class="opt_header">About</a></li>  
+        </ul>
+      </div>
+    </div>
+    <center>
+    	            <img src="" th:src="@{/images/login.png}"  alt='Logo' width='300px'/>
+
+		<form th:action="@{/login}"  method="post">
+            <div th:if="${param.error}" >
+                <div class="alert alert-danger"> Nom d'utilisateur ou mot de passe invalide(s)</div>
+            </div>
+            <div th:if="${param.logout}" >
+                <div class="alert alert-info"> Vous êtes déconnecté , il faut s'authentifier pour avoir le droit</div>
+            </div>
+            
+			<div class="form-floating">Nom d'utilisateur : <br><br><input class="form-control"  type="text" name="username" required
+					 /></div><br><br>
+			<div class="form-floating">Mot de Passe : <br><br><input class="form-control" type="password" id="password"
+					name="password"  required autofocus="autofocus" /></div><br>
+			<div><button class="btn btn-primary" type="submit">Login</button></div><br>
+        </form>
+       </center>
+        <div class="form-group"><span>Créer un compte <a href="/" th:href="@{/inscription}">Inscription</a></span></div>
+	</section>
+
+
+</body>
+
+</html>

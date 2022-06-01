@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/default}">
+
+<head>
+	<title>Ajout d'un d�veloppeur</title>
+	<style>
+		body{
+			background-color: #101115;
+			color: white;
+		}
+		a{
+			width:300px;
+			height : 50px;
+			text-align: center;
+		}
+		form{
+			width :700px;
+		}
+		button{
+			width:400px;
+			border-radius: 300px;
+		}
+	</style>
+</head>
+
+<body>
+	<section layout:fragment="contenu">
+	<br><br><br><br>
+	<center>
+		<form th:action="@{/tickets/add}" th:object="${ticket}" method="post">
+			<div class="form-group"> Id: <input class="form-control" readonly type="text" name="id"
+					th:field="*{id}" /></div>
+			<div sec:authorize="hasAnyRole('ROLE_ADMIN')" class="form-group"> Descriptionn: <input th:errorclass="alert-danger" class="form-control" type="text" 
+					readonly id="nom" name="nom" th:field="*{descr}" /></div>
+			<div sec:authorize="hasAnyRole('ROLE_CLIENT')" class="form-group"> Descriptionn: <input th:errorclass="alert-danger" class="form-control" type="text"
+					id="nom" name="nom" th:field="*{descr}" /></div>
+			<div sec:authorize="hasAnyRole('ROLE_CLIENT')" class="form-group"> Urgence:
+				<select th:field="*{urgence}" th:errorclass="alert-danger" class="form-control" 
+					id="urgence" name="urgence">
+					<option th:value="'null'"></option>
+					<option th:selected="${urgence}=='Urgent'" th:value="'Urgent'" th:text="Urgent"></option>
+					<option th:selected="${Normal}=='Urgent'"  th:value="'Normal'" th:text="Normal"></option>
+				</select>
+			</div>
+			<div sec:authorize="hasAnyRole('ROLE_ADMIN')" class="form-group"> Urgence: <input th:errorclass="alert-danger" class="form-control" type="text" 
+					readonly id="urgence" name="urgence" th:field="*{urgence}" /></div>
+			<div sec:authorize="hasAnyRole('ROLE_DEV')" class="form-group"> etat:
+				<select th:field="*{etat}" th:errorclass="alert-danger" class="form-control"
+					id="etat" name="etat">
+					<option th:value="'null'"></option>
+					<option th:selected="${etat}=='Nouveau'" th:value="'Nouveau'" th:text="Nouveau"></option>
+					<option th:selected="${etat}=='Encours'"  th:value="'Encours'" th:text="Encours"></option>
+					<option th:selected="${etat}=='Termine'"  th:value="'Termine'" th:text="Termine"></option>
+				</select>
+			</div>
+			<div class="form-group" > etat : <input th:errorclass="alert-danger" class="form-control" type="text"
+					id="etat" name="etat" th:field="*{etat}" readonly/></div>
+			
+			<div class="form-group" sec:authorize="hasRole('ADMIN')" > Client : <input th:errorclass="alert-danger" class="form-control" type="text"
+					id="client" name="client" th:field="*{client}" readonly/></div>
+			<div class="form-group" sec:authorize="hasRole('ADMIN')" > Developpeur :
+			<select sec:authorize="hasRole('ADMIN')" class="form-control" id="dev"  th:object="${ticket.dev}"  name="dev">
+				<option selected th:value"null">
+				<option th:each="devl : ${options}" th:value="${devl.id}"  th:selected="${devl==ticket.dev}" th:text="${devl.userName}"></option>
+			</select>
+			</div>
+			<div class="form-group"  sec:authorize="hasRole('CLIENT')"> Developpeur : <input th:errorclass="alert-danger" class="form-control" type="text"
+					id="dev" name="dev" th:field="*{dev}" readonly/></div><br><br>
+			<div><button class="btn btn-primary" type="submit">Enregistrer</button></div>
+			<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger" role="alert">
+				<li th:each="err:  ${#fields.errors('*')}" th:text="${err}" />
+			</ul>
+		</form>
+	</center>
+	</section>
+</body>
+
+</html>x

@@ -1,0 +1,71 @@
+<!doctype html>
+<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"layout:decorate="~{layout/default}">
+
+<head>
+
+	<title>Les tickets</title>
+	<style>
+		body{
+			background-color: #101115;
+			color: white;
+		}
+		a{
+			width:250px;
+			height : 50px;
+			text-align: center;
+		}
+		td{
+			color:white
+		}
+		
+	</style>
+</head>
+
+<body>
+	<section layout:fragment="contenu"><br><br>
+	<h1>Les tickets non affecteess</h1><br>
+	<div sec:authorize="hasAnyRole('ROLE_CLIENT')"> <a th:href="@{/tickets/add}" class="btn btn-primary">Ajouter</a> </div><br><br>
+	<table class="table">
+		<thead class="table-light">
+			<tr>
+				<th scope="col">Id</th>
+				<th scope="col">Description</th>
+				<th scope="col">Urgence</th>
+				<th scope="col">status</th>
+				<th scope="col">etat</th>
+				<th scope="col">client</th>
+				<th scope="col">developpeur</th>
+				<th scope="col"></th>
+				<th scope="col"></th>
+
+			</tr>
+		</thead>
+		<tbody class="">
+
+			<tr th:each="t:${tickets}">
+				<th scope="row" th:text="${t.id}">1d</th>
+				<td th:text="${t.descr}">Description</td>
+				<td th:text="${t.urgence}">urgence</td>
+				<td th:text="${t.status}">status</td>
+				<td th:text="${t.etat}">etat</td>
+				<td th:text="${t.client.Id}">client</td>
+				<td th:if="${t.dev !=null }"  th:text="${t.dev.Id}">developpeur</td>
+				<td th:unless="${t.dev !=null }"  th:text="none">developpeur</td>
+				<td> <a sec:authorize="hasAnyRole('CLIENT','ADMIN')" th:href="@{/tickets/edit/{id}(id=${t.id})}" class="btn btn-success" /><input sec:authorize="hasAnyRole('CLIENT','ADMIN')" class="btn" value="editer">
+				</td>
+				<td> <a  sec:authorize="hasAnyRole('ROLE_CLIENT','ROLE_ADMIN')" th:href="@{/tickets/delete/{id}(id=${t.id})}" class="btn btn-danger"  /><input  sec:authorize="hasAnyRole('CLIENT','ADMIN')"class="btn" value="supprimer"></td>
+				
+				<td> <a sec:authorize="hasAnyRole('DEV')" th:href="@{/dev/tickets/setEncours/{id}(id=${t.id})}" class="btn btn-success" /><input  sec:authorize="hasAnyRole('DEV')" class="btn" value="marquer comme encours">
+				</td>
+				<td> <a sec:authorize="hasAnyRole('DEV')" th:href="@{/dev/tickets/setTermine/{id}(id=${t.id})}" class="btn btn-success" /><input  sec:authorize="hasAnyRole('DEV')" class="btn" value="termine">
+				</td>
+			</tr>
+
+
+		</tbody>
+	</table>
+	<br><br><br><br>
+</section>
+</body>
+
+</html>

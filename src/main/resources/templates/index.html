@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/default}">
+
+<head>
+	<title>Accueil</title>
+	<link rel="stylesheet" type="text/css" href="css/app.css"/>
+	<style>
+		body{
+			background-color: #101115;
+			color: white;
+		}
+		.header_page{
+		    height: 90px;
+		    width: auto;
+		}
+		.options{
+		    float: right;
+		    justify-content: space-around;
+		    display: flex;
+		    list-style: none;
+		    margin-top: 10px;
+		    color: white;
+		    top: 50%;
+		
+		}
+		.logo{
+		    float: left;
+		}
+		.opt_header{
+		   padding-left: 40px;
+		}
+		.hire_me{
+		    float: right;
+		    margin-left: 20px;
+		}
+		.hire_btn{
+		    display: flex;
+		    font-family: 'Circular Std';
+		    color: white;
+		    background-color: transparent;
+		    border: 1px white solid;
+		    border-radius: 5px;
+		    height: 35px;
+		    padding: 10px 15px; 
+		    cursor: pointer;
+		
+		}
+		.hire_btn:hover{
+		    background-color: #3E82E5;
+		    color: white;
+		    border: 1px #3E82E5 solid;
+		}
+
+	</style>
+</head>
+
+<body class="container">
+	<section layout:fragment="contenu">
+	<div class='header_page'>
+      <div class='logo'>
+        <img src="" th:src="@{/images/ticketlogo.png}"  alt='Logo' width='70px'/>
+      </div>
+      <div class='testop'>
+        <ul class='options'>
+          <li><a class="opt_header"><span><a href="/" th:href="@{/login}">S'authentifier</a></span></a></li>
+          <li><a class="opt_header"><span><a href="/" th:href="@{/inscription}">S'enregistrer</a></span></a></li>
+          <li><a class="opt_header">About</a></li>  
+        </ul>
+      </div>
+    </div>
+		<h1>Page d'accueil</h1><br>
+		<h5>Bonjour à l'application de gestion des tickets</h5><br>	
+		<center>
+	        <img src="" th:src="@{/images/reservation.png}"  alt='Index image' width='400px'/>
+		</center>
+	</section>
+
+
+</body>
+
+</html>

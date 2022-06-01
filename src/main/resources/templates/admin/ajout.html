@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/default}">
+
+<head>
+	<title>Ajout d'un d�veloppeur</title>
+	<style>
+		body{
+			background-color: #101115;
+			color: white;
+		}
+		a{
+			width:250px;
+			height : 50px;
+			text-align: center;
+		}
+		td{
+			color:white
+		}
+		form{
+			width :700px;
+		}
+		button{
+			width:400px;
+			border-radius: 300px;
+		}
+		
+	</style>
+</head>
+
+<body>
+	<section layout:fragment="contenu">
+	<br><br><br>
+	<center>
+		<form th:action="@{/admin/users/addDev}" th:object="${user}" method="post">
+			<input   type="text" name="id" hidden
+					th:field="*{id}" />
+			<div class="form-floating"> user name: <input class="form-control"  type="text" name="userName"
+					th:field="*{userName}" /></div><br><br>
+			<div class="form-floating"> Password: <input class="form-control" type="password" id="password"
+					name="password" th:field="*{password}" required autofocus="autofocus" /></div>
+					<br><br>
+			<div><button class="btn btn-primary" type="submit">Enregistrer</button></div>
+		<span>Déjà enregistré? <a href="/" th:href="@{/admin}">Login</a></span>
+        </form>
+       </center>
+        <br><br>
+	</section>
+
+
+
+</body>
+
+</html>x

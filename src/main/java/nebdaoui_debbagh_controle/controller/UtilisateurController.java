@@ -25,11 +25,5 @@ import nebdaoui_debbagh_controle.service.UtilisateurService;
 public class UtilisateurController {
 	 @Autowired
 	 TicketService ticketService ;
-	 
-	
-	
-
-	
-	
 
 }

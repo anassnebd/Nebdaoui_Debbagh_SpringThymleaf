@@ -13,14 +13,8 @@ import nebdaoui_debbagh_controle.service.TicketService;
 
 @RestController
 @RequestMapping("/admin")
-public class AdminController {
-		
+public class AdminController {		
 	@Autowired
 	TicketService ticketService;
-	
-	
-	
-	
- 
-	 
+
 }

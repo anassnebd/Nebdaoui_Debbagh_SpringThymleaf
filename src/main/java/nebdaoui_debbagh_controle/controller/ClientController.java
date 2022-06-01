@@ -19,7 +19,5 @@ import nebdaoui_debbagh_controle.service.TicketService;
 @RestController
 @RequestMapping("")
 public class ClientController {
-
-	
 	
 }

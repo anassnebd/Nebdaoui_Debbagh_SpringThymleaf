@@ -20,7 +20,6 @@ public class Ticket {
 	private String descr;
 	private String urgence;
 	private Boolean status;
-	
 	private String etat;
 	
 	@ManyToOne

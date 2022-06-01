@@ -38,8 +38,7 @@ public class Developpeur {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	
+	//relation
 	@ManyToMany
 	@JoinTable(name = "taches_dev", joinColumns = @JoinColumn(name = "dev_id"), inverseJoinColumns = @JoinColumn(name = "tache_id"))
 	List<Ticket> tickets;

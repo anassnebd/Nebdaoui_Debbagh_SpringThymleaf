@@ -13,12 +13,11 @@ public class Role {
 	 private Long id; 
 	 private String nom; 
 	 
+	 //Constructeur par defaut
 	 public Role() { 
 	 
 	 } 
-	 
-	 
-	 
+
 	 public Long getId() { 
 	 return id; 
 	 } 
@@ -40,7 +39,7 @@ public class Role {
 
 	@Override
 	public String toString() {
-		return "Role [id=" + id + ", nom=" + nom + "]";
+		return " Role [id=" + id + ", nom=" + nom + " ] ";
 	} 
 	 
 	 
